@@ -1,0 +1,160 @@
+
+
+.video-container {
+    width: 100%;
+    border-radius: 8px;
+    max-width: 800px;
+    overflow: hidden;
+}
+
+.vid-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0f0f0f;
+    margin: 16px 0 10px;
+}
+
+.views-time-interactions-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.views-time {
+    display: flex;
+    gap: 12px;
+    font-size: 14px;
+    color: #606060;
+}
+
+.interactions {
+    display: flex;
+    gap: 16px;
+}
+
+.interaction-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    color: #606060;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.interaction-btn:hover {
+    color: #0f0f0f;
+}
+
+.interaction-icon {
+    font-size: 18px;
+}
+
+.interaction-icon-absent
+{
+    color:black;
+}
+
+.interaction-icon-present
+{
+    color:rgb(0, 255, 42);
+    font-size:20px;
+    text-decoration:underline;
+   
+}
+
+
+
+.liked
+{
+    color:blue;
+    font-weight:bold;
+    font-family: 'Nunito', sans-serif;
+    text-decoration: underline;
+    font-size:20px;
+}
+
+.disliked
+{
+    color:red;
+    font-weight:bold;
+    font-family: 'Nunito', sans-serif;
+    text-decoration: underline;
+    font-size:20px;
+}
+
+.separator {
+    border: none;
+    border-top: 1px solid #e5e5e5;
+    margin: 16px 0;
+}
+
+.profileimage-description-container {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.channel-profile-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.description-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.channel-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #0f0f0f;
+    margin: 0;
+}
+
+.subscribers {
+    font-size: 13px;
+    color: #606060;
+    margin: 0;
+}
+
+.channel-description {
+    font-size: 14px;
+    color: #383838;
+    line-height: 1.6;
+    margin: 8px 0 0;
+}
+
+
+
+@media (max-width: 576px) {
+    .video-container {
+        max-width: 100%;
+    }
+
+    .views-time-interactions-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .interactions {
+        gap: 10px;
+    }
+
+    .vid-title {
+        font-size: 15px;
+    }
+
+    .profileimage-description-container {
+        flex-direction: column;
+    }
+}

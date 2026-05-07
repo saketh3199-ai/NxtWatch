@@ -1,0 +1,61 @@
+.trigger-button {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Hide hamburger on medium and above */
+@media (min-width: 768px) {
+  .trigger-button {
+    display: none;
+  }
+}
+
+
+
+.popup-content {
+  width: 260px;
+  padding: 20px;
+  position: relative;
+  background: #fff;
+  border-radius: 8px;
+}
+
+/* hamburger trigger button */
+.trigger-button {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* close button top-right */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* menu */
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 40px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.menu-list li {
+  cursor: pointer;
+}

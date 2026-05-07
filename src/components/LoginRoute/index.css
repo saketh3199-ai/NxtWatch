@@ -1,0 +1,80 @@
+/* Full page center */
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f9f9;
+}
+
+/* Card */
+.form-container {
+  width: 350px;
+  padding: 30px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Logo */
+.logo {
+  width: 150px;
+  margin-bottom: 25px;
+}
+
+/* Input group */
+.input-group {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+  color: #475569;
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #d7dfe9;
+  border-radius: 4px;
+  outline: none;
+}
+
+/* Checkbox */
+.checkbox-group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.checkbox-label {
+  margin-left: 8px;
+  font-size: 14px;
+  color: #475569;
+}
+
+/* Button */
+.login-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+
+.error-message {
+  color: #ff0b37;
+  font-size: 14px;
+  margin-top: 10px;
+  align-self: flex-start;
+}
