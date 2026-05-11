@@ -1,6 +1,9 @@
 import { Component } from "react";
 import "./index.css"
 import Cookies from 'js-cookie'
+import SavedVidContextObj from "../../context/SavedVidContext";
+
+
 const LoginApiUrl = "https://apis.ccbp.in/login"
 
 
@@ -158,12 +161,21 @@ class LoginRoute extends Component
         const {showPassword} = this.state
 
 
-        const LoginRoute = 
-        <div className="login-container">
-            <form className="form-container" onSubmit={this.SubmitForm}>
+        const LoginRouteConsumer = 
+        <SavedVidContextObj.Consumer>
+
+            {
+
+                (value)=>
+                {
+                    const {ThemeColor} = value
+
+                    const LoginRouteEl=
+                     <div className={ThemeColor==="black"?"login-container-black-theme login-container":"login-container-white-theme login-container"}>
+                        <form className={ThemeColor==="black"?"form-container-black-theme form-container":"form-container-white-theme form-container"} onSubmit={this.SubmitForm}>
         
                 {/* element-1: Image */}
-                <img src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png" alt="website logo" className="logo"/>
+                <img src={ThemeColor==="black"?"https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png":"https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"} alt="website logo" className="logo"/>
 
                 {/* element-2: Username */}
                 <div className="input-group">
@@ -191,9 +203,19 @@ class LoginRoute extends Component
                 </button>
                 {this.renderErrorMsg()}
             </form>
-        </div>
+                    </div>
 
-        return LoginRoute
+                    return LoginRouteEl
+                }
+            }
+
+
+        </SavedVidContextObj.Consumer>
+        
+        
+       
+
+        return LoginRouteConsumer
     }
 }
 

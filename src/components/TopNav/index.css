@@ -21,6 +21,19 @@
   height: 100%;
 }
 
+.theme-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.top-nav.black-theme .theme-btn {
+    color: #ffffff;
+}
+
 /* LOGO */
 .logo {
   height: 32px;
@@ -110,4 +123,18 @@ svg {
   .logout-icon-mobile {
     display: none;
   }
+}
+
+
+.top-nav.black-theme {
+    color: #ffffff;
+    border-bottom: 1px solid #333333;
+}
+
+.top-nav.black-theme .theme-text {
+    color: #ffffff;
+}
+
+.top-nav.black-theme .logout-icon-mobile {
+    color: #ffffff;
 }

@@ -18,7 +18,7 @@
   width: 260px;
   padding: 20px;
   position: relative;
-  background: #fff;
+  /* background: #fff; */
   border-radius: 8px;
 }
 
@@ -28,6 +28,11 @@
   border: none;
   font-size: 24px;
   cursor: pointer;
+}
+
+
+.top-nav.black-theme .trigger-button {
+    color: #ffffff;
 }
 
 /* close button top-right */
@@ -58,4 +63,57 @@
 
 .menu-list li {
   cursor: pointer;
+}
+
+.mobile-link-designer
+{
+  text-decoration:none;
+}
+
+.black-theme-popup-container
+{
+  background-color: rgb(0, 0, 0);
+  color:aqua;
+}
+
+
+
+.white-theme-popup-container
+{
+  background-color: white;
+  color:black;
+}
+
+
+.popup-overlay {
+    background: rgba(232, 19, 19, 0.5);
+    z-index: 999;
+}
+
+.popup-content {
+    width: 260px;
+    padding: 20px;
+    position: relative;
+    /* background: #fff; */
+    border-radius: 8px;
+    z-index: 1000;
+}
+
+
+.mobile-link-dark {
+    text-decoration: none;
+    color: #A5D6FF;
+}
+
+.mobile-link-light {
+    text-decoration: none;
+    color: #000000;
+}
+
+.close-btn-dark {
+    color: #ffffff;
+}
+
+.close-btn-light {
+    color: #000000;
 }

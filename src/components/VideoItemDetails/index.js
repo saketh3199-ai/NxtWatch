@@ -8,12 +8,16 @@ import "./index.css";
 import Cookies from 'js-cookie'
 import { FetchDate } from "../../utilities";
 import SavedVidContextObj from "../../context/SavedVidContext";
+import { ThreeDots } from 'react-loader-spinner'
+import { ApiStatusArr } from "../../utilities";
+
 
 class VideoItemDetails extends Component
 {
 
     state = {
         videoDetailsObject:null,
+        ApiStatus:ApiStatusArr[0]
         
     }
 
@@ -43,6 +47,7 @@ class VideoItemDetails extends Component
 
     MakeApiCallToVidDetailsApi = async ()=>
     {
+        this.setState({ApiStatus:ApiStatusArr[0]})
         const {id} = this.props.match.params
         const DetailVideoApiUrl =`https://apis.ccbp.in/videos/${id}`
         // console.log(id)
@@ -66,12 +71,12 @@ class VideoItemDetails extends Component
                 
             }
         
-            this.setState({videoDetailsObject:ReformattedVideoDetailsObject})
+            this.setState({videoDetailsObject:ReformattedVideoDetailsObject,ApiStatus:ApiStatusArr[1]})
         }
 
         else
         {
-            console.log("The API CALL to VIDEO DETAILS URL has failed")
+            this.setState({ApiStatus:ApiStatusArr[2]})
         }
     }
 
@@ -81,6 +86,9 @@ class VideoItemDetails extends Component
 
 
 
+
+
+  
 
 
 
@@ -96,19 +104,16 @@ class VideoItemDetails extends Component
     render()
     {
 
-        const {videoDetailsObject} = this.state
+        const {videoDetailsObject,ApiStatus} = this.state
 
-        if (videoDetailsObject === null)
-        {
-            return null
-        }
+        
 
 
-        const {id,title,videoUrl,viewCount,publishedAt,description,channel} = videoDetailsObject
+        // const {id,title,videoUrl,viewCount,publishedAt,description,channel} = videoDetailsObject
 
-        const {name,profileImageUrl,subscriberCount} = channel
+        // const {name,profileImageUrl,subscriberCount} = channel
 
-        const TimeGap = FetchDate(publishedAt)
+        // const TimeGap = FetchDate(publishedAt)
 
         const VideoItemDetailsElementConsumer = 
           <SavedVidContextObj.Consumer>
@@ -116,10 +121,24 @@ class VideoItemDetails extends Component
 
                     (value)=>
                     {
-                        const {AddVidItem,SavedVidArr,DeleteVidItem,CheckIdInLikedArr,LikedArrId,CheckIdInDisLikedArr,DisLikedArrId} = value
+                        const {AddVidItem,SavedVidArr,DeleteVidItem,CheckIdInLikedArr,LikedArrId,CheckIdInDisLikedArr,DisLikedArrId,ThemeColor} = value
 
                         
-                        const IsItLiked = LikedArrId.some
+
+                        const renderSuccessView = ()=>
+                        {
+
+                            
+                             if (videoDetailsObject === null)
+                            {
+                                return null
+                            }
+
+
+                                const {id,title,videoUrl,viewCount,publishedAt,description,channel} = videoDetailsObject
+                                const {name,profileImageUrl,subscriberCount} = channel
+                                const TimeGap = FetchDate(publishedAt)
+                                const IsItLiked = LikedArrId.some
                         (
                             (IndividualId)=>
                             {
@@ -128,10 +147,8 @@ class VideoItemDetails extends Component
                                     return true
                                 }
                             }
-                        )
-
-
-                        const IsItDisLiked = DisLikedArrId.some
+                                 )
+                                const IsItDisLiked = DisLikedArrId.some
                         (
                             (IndividualId)=>
                             {
@@ -140,14 +157,8 @@ class VideoItemDetails extends Component
                                     return true
                                 }
                             }
-                        )
-
-                        
-                        
-                        
-                        
-                        
-                        const VideoItemExistence = SavedVidArr.some
+                                )
+                                const VideoItemExistence = SavedVidArr.some
                             (
                                 (videoObject)=>
                                 {
@@ -156,20 +167,8 @@ class VideoItemDetails extends Component
                                         return true
                                     }
                                 }
-                            )
-                        
-                        
-                        
-                        
-                        
-                      
-                      
-
-
-
-                      
-                      
-                        const onSaveClicked = ()=>
+                                 )
+                                const onSaveClicked = ()=>
                         {
                             
 
@@ -183,73 +182,47 @@ class VideoItemDetails extends Component
                             {
                                 AddVidItem({...videoDetailsObject})
                             }
-                        }
-
-                        
-                        
-
-
-
-
-
-                        
-                        
-                        
-                        const OnClickLike = ()=>
-                        {
+                                }
+                                 const OnClickLike = ()=>
+                                {
                             
-                          CheckIdInLikedArr(id)
-                        }
+                                    CheckIdInLikedArr(id)
+                                }
                         
-                        
-
-
-
-
-
-
-                        const OnClickDisLike = ()=>
+                                const OnClickDisLike = ()=>
                         {
                             CheckIdInDisLikedArr(id)
                            
                         }
 
-
-
-
-                        
-                        const VideoItemDetailsElement = 
-                        <>
-                            <TopNav />
-                            <div className="down-section-container">
-                                <SideNav />
-
-                                <div className="main-section">
+                           
+                            const SuccessView = 
+                             <div className="main-section">
 
                                     <div className="video-container">
                                         <ReactPlayer url={videoUrl} controls={true} width="100%" height="500px"/>
                                     </div>
 
-                                    <p className="vid-title">{title}</p>
+                                    <p className={ThemeColor==="black"?"vid-title title-black-theme-vd":"vid-title title-white-theme-vd"}>{title}</p>
 
                                     <div className="views-time-interactions-container">
                                         <div className="views-time">
-                                            <span>{viewCount} views</span>
-                                            <span>{TimeGap}</span>
+                                            <span className={ThemeColor==="black"?"title-black-theme-vd":"title-white-theme-vd"}>{viewCount} views</span>
+                                            <span className={ThemeColor==="black"?"title-black-theme-vd":"title-white-theme-vd"}>{TimeGap}</span>
                                         </div>
                                         <div className="interactions">
-                                            <button className={IsItLiked?"interaction-btn liked":"interaction-btn"} onClick={OnClickLike}>
+                                            <button className={`interaction-btn ${IsItLiked ? "liked" : ""} ${ThemeColor === "black" ? "title-black-theme-vd" : "title-white-theme-vd"}`} onClick={OnClickLike}>
                                                 <AiOutlineLike className="interaction-icon" />
                                                 Like
                                             </button>
-                                            <button className={IsItDisLiked?"interaction-btn disliked":"interaction-btn"} onClick={OnClickDisLike}>
+                                            <button className={`interaction-btn ${IsItDisLiked?"disliked":""} ${ThemeColor==="black"?"title-black-theme-vd":"title-white-theme-vd"}`} onClick={OnClickDisLike}>
                                                 <AiOutlineDislike className="interaction-icon" />
                                                 Dislike
                                             </button>
-                                            <button className={VideoItemExistence?"interaction-btn interaction-icon-present ":"interaction-btn interaction-icon-absent"} onClick={onSaveClicked}>
-                                                <MdPlaylistAdd className="interaction-icon"  />
-                                                {VideoItemExistence?"saved":"save"}
-                                            </button>
+                                         <button className={`interaction-btn ${VideoItemExistence ? "saved-active" : ""} ${ThemeColor === "black" ? "title-black-theme-vd" : "title-white-theme-vd"}`} onClick={onSaveClicked}>
+                                                <MdPlaylistAdd className="interaction-icon" />
+                                                    {VideoItemExistence ? "saved" : "save"}
+                                        </button>
                                         </div>
                                     </div>
 
@@ -258,15 +231,60 @@ class VideoItemDetails extends Component
                                     <div className="profileimage-description-container">
                                         <img src={profileImageUrl} alt="channel profile" className="channel-profile-img"/>
                                         <div className="description-container">
-                                            <p className="channel-name">{name}</p>
-                                            <p className="subscribers">{subscriberCount} subscribers</p>
-                                            <p className="channel-description">
+                                            <p className={ThemeColor==="black"?"channel-name title-black-theme-vd":"channel-name title-white-theme-vd"}>{name}</p>
+                                            <p className={ThemeColor==="black"?"subscribers title-black-theme-vd":"subscribers title-white-theme-vd"}>{subscriberCount} subscribers</p>
+                                            <p className={ThemeColor==="black"?"channel-description title-black-theme-vd":"channel-description title-white-theme-vd"}>
                                                 {description}
                                             </p>
                                         </div>
                                     </div>
 
+                            </div>
+
+                            return SuccessView
+                        }
+
+                        const renderLoadingView = ()=>
+                        {
+                              const LoadingView = 
+                             <ThreeDots height="180" width="180" color="red" visible={true}/>
+
+                                return LoadingView
+                        }
+
+
+                        const renderFailureView = () =>
+                        {
+                            const FailureView =
+                                <div className="failure-view-container">
+                                                            <img 
+                                                                src={ThemeColor === "black" ? "https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png" : "https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"} 
+                                                                alt="failure view" 
+                                                                className="failure-img"
+                                                            />
+                                                            <h2 className={ThemeColor === "black" ? "failure-heading black-failure-theme" : "failure-heading white-failure-theme"}>
+                                                                Oops! Something Went Wrong
+                                                            </h2>
+                                                            <p className={ThemeColor === "black" ? "failure-description black-failure-theme" : "failure-description white-failure-theme"}>
+                                                                We are having some trouble completing your request. Please try again.
+                                                            </p>
+                                                            <button className="failure-retry-btn" onClick={this.MakeApiCallToVidDetailsApi}>Retry</button>
                                 </div>
+
+                            return FailureView
+                        }
+
+
+                        
+                        const VideoItemDetailsElement = 
+                        <>
+                            <TopNav />
+                            <div className={ThemeColor==="black"?"down-section-container black-theme":"down-section-container white-theme"}>
+                                <SideNav />
+                                {ApiStatus===ApiStatusArr[0]?renderLoadingView():null}
+                                {ApiStatus===ApiStatusArr[1]?renderSuccessView():null}
+                                {ApiStatus===ApiStatusArr[2]?renderFailureView():null}
+                               
                             </div>
                         
                         

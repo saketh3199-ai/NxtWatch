@@ -34,7 +34,7 @@
 .nav-item {
   font-size: 16px;
   cursor: pointer;
-
+  text-decoration:none;
   display: flex;
   align-items: center;
 }
@@ -78,9 +78,31 @@ img {
   display: block;
 }
 
+.black-theme-side-nav
+{
+  color:aqua;
+}
+
+
+.white-theme-side-nav
+{
+  color:black;
+}
+
 /* RESPONSIVE RULE (as you requested) */
 @media (max-width: 767px) {
   .side-nav {
     display: none;
   }
+}
+
+
+.side-nav.black-theme .contact-title,
+.side-nav.black-theme .side-description {
+    color: aqua;
+}
+
+.side-nav.white-theme .contact-title,
+.side-nav.white-theme .side-description {
+    color: #000000;
 }

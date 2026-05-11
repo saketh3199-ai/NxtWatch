@@ -18,6 +18,14 @@
     color: inherit;
     flex-shrink: 0;       /* ← add this */
 }
+
+
+.individual-gaming-card:hover
+{
+    transform: translateY(-4px);
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
 .gaming-thumbnail {
     width: 100%;
     aspect-ratio: 16 / 9;

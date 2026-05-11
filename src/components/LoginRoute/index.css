@@ -7,15 +7,37 @@
   background-color: #f9f9f9;
 }
 
+
+.login-container-black-theme
+{
+  background-color: #3b3838;
+}
+
+.login-container-white-theme
+{
+  background-color: #ffffff;
+
+}
+
 /* Card */
 .form-container {
   width: 350px;
   padding: 30px;
   border-radius: 8px;
-  background-color: #ffffff;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.form-container-black-theme
+{
+  background-color: black;
+}
+
+.form-container-white-theme
+{
+  background-color: rgb(228, 174, 174);
 }
 
 /* Logo */

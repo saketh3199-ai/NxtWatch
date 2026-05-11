@@ -13,3 +13,8 @@ export function FetchDate(publishedAt)
 }
 
 
+export const ApiStatusArr = [
+    "loading",
+    "success",
+    "fail"
+]

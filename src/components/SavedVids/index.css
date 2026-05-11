@@ -1,0 +1,67 @@
+.empty-view-image-styler
+{
+  height:200px;
+  width:200px;
+
+}
+
+
+@media screen and (min-width:768px) {
+  .empty-view-image-styler
+{
+  height:500px;
+  width:500px;
+  
+}
+}
+
+
+.no-saved-videos-black
+{
+  color:white;
+  font-family:"Roboto";
+  font-size:28px;
+  font-weight:bold;
+}
+
+
+
+.no-saved-videos-white
+{
+  color:rgb(0, 0, 0);
+  font-family:"Roboto";
+  font-size:28px;
+  font-weight:bold;
+}
+
+
+.no-saved-videos-para-black
+{
+    color:rgb(255, 255, 255);
+  font-family:"Roboto";
+  font-size:14px;
+  font-weight:bold;
+}
+
+
+.no-saved-videos-para-white
+{
+    color:rgb(0, 0, 0);
+  font-family:"Roboto";
+  font-size:14px;
+  font-weight:bold;
+}
+
+.no-savied-videos-empty-container
+{
+  text-align: center;
+}
+.gaming-videos-container-empty-view {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}

@@ -1,0 +1,13 @@
+.black-theme-itvc .trending-video-title,
+.black-theme-itvc .trending-channel-name,
+.black-theme-itvc .trending-meta,
+.black-theme-itvc .trending-meta span {
+    color: aquamarine;
+}
+
+.white-theme-itvc .trending-video-title,
+.white-theme-itvc .trending-channel-name,
+.white-theme-itvc .trending-meta,
+.white-theme-itvc .trending-meta span {
+    color: #0f0f0f;
+}

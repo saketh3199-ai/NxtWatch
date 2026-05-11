@@ -2,9 +2,12 @@ import { Component } from "react";
 import "./index.css"
 import HamPopUp from "../HamPopUp";
 import { IoIosLogOut } from "react-icons/io"
-import {withRouter} from "react-router-dom"
+import {Link,withRouter} from "react-router-dom"
 import SavedVidContextObj from "../../context/SavedVidContext";
-
+import Cookies from "js-cookie"
+import { FaSun } from "react-icons/fa";
+import { FaMoon } from "react-icons/fa";
+import LogOutPopUp from "../LogoutPopUp";
 
 class TopNav extends Component
 {
@@ -12,6 +15,7 @@ class TopNav extends Component
 
     onClickLogout = ()=>
     {
+        Cookies.remove("jwtToken")
         const {history} = this.props
         history.replace("/login")
     }
@@ -62,24 +66,27 @@ class TopNav extends Component
                          
                         <nav className={ThemeColor==="black"?"top-nav black-theme":"top-nav white-theme"}>
                             {/* Section 1 */}
-                            <div className="section-1">
-                                <img src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png" alt="logo" className="logo"/>
-                            </div>
+                            <Link to="/" className="section-1">
+                                <img src={ThemeColor==="black"?"https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png":"https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"} alt="logo" className="logo"/>
+                            </Link>
 
                             {/* Section 2 */}
                             <div className="section-2">
 
                                 {/* Theme text (optional keep) */}
-                                <p className="theme-text" onClick={OnClickChangeTheme}>Change to Dark Mode</p>
+                               <button className="theme-btn" onClick={OnClickChangeTheme}>
+                                    {ThemeColor === "black" ? <FaSun /> : <FaMoon />}
+                                </button>
 
                                 {/* Profile (md+) */}
                                 <img src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png" alt="profile" className="profile-img"/>
 
                                 {/* Logout button (md+) */}
-                                <button className="logout-btn" onClick={this.onClickLogout}>Logout</button>
+                                {/* <button className="logout-btn" onClick={this.onClickLogout}>Logout</button> */}
+                                <LogOutPopUp onClickLogout={this.onClickLogout} />
 
                                 {/* Mobile logout icon (xs-sm) */}
-                                <IoIosLogOut className="logout-icon-mobile" />
+                                <LogOutPopUp onClickLogout={this.onClickLogout} trigger={<IoIosLogOut className="logout-icon-mobile" />}/>
 
                                 {/* Hamburger Popup (mobile menu) */}
                                 <HamPopUp />

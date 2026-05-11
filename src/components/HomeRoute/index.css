@@ -64,6 +64,72 @@
   gap: 16px;
 }
 
+.video-grid-empty-view {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.no-search-results-container
+{
+  text-align:center;
+}
+
+.retry-btn
+{
+  background-color: rgb(255, 0, 255);
+  height:50px;
+  width:100px;
+  border-radius:10px;
+  font-family:"Roboto";
+  color:#ccc;
+  font-size:20px;
+  cursor:pointer;
+}
+
+.no-search-results-heading-black
+{
+  font-family:"Roboto";
+  font-size:28px;
+  color:white;
+  font-weight:bold;
+}
+
+
+
+.no-search-results-heading-white
+{
+  font-family:"Roboto";
+  font-size:28px;
+  color:black;
+  font-weight:bold;
+}
+
+
+.no-search-results-para-black
+{
+  font-family:"Roboto";
+  font-size:14px;
+  color:rgb(255, 255, 255);
+  font-weight:bold;
+}
+
+
+
+
+.no-search-results-para-white
+{
+  font-family:"Roboto";
+  font-size:14px;
+  color:rgb(0, 0, 0);
+  font-weight:bold;
+
+}
+
+
+
+
 .individual-vc-container {
   background: #fff;
   border-radius: 8px;
@@ -72,6 +138,23 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   text-decoration: none;
+}
+
+.empty-view-image-styler
+{
+  height:200px;
+  width:200px;
+
+}
+
+
+@media screen and (min-width:768px) {
+  .empty-view-image-styler
+{
+  height:500px;
+  width:500px;
+  
+}
 }
 
 .individual-vc-container:hover {
@@ -152,4 +235,62 @@
 
 .vc-meta span:last-child::after {
   content: '';
+}
+
+
+.failure-view-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.failure-img {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 24px;
+}
+
+.failure-heading {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0f0f0f;
+    margin: 0 0 12px;
+}
+
+.failure-description {
+    font-size: 15px;
+    color: #606060;
+    margin: 0 0 24px;
+    max-width: 400px;
+    line-height: 1.6;
+}
+
+.failure-retry-btn {
+    background-color: #3b82f6;
+    color: #ffffff;
+    border: none;
+    padding: 10px 28px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.failure-retry-btn:hover {
+    background-color: #2563eb;
+}
+
+
+.black-failure-theme
+{
+  color:aqua;
+}
+
+.white-failure-theme
+{
+  color:#0f0f0f;
 }

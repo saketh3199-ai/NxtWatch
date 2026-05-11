@@ -6,12 +6,15 @@ import "./index.css"
 import TrendingIndividualCard from "../TrendingIndividualCard";
 import Cookies from "js-cookie"
 import SavedVidContextObj from "../../context/SavedVidContext";
+import { ApiStatusArr } from "../../utilities";
+import { ThreeDots } from 'react-loader-spinner'
 
 class Trending extends Component
 {
 
     state = {
-        VideoArray:null
+        VideoArray:null,
+        ApiStatus:ApiStatusArr[0]
     }
 
 
@@ -53,6 +56,7 @@ class Trending extends Component
 
     CallApi = async ()=>
     {
+        this.setState({ApiStatus:ApiStatusArr[0]})
         const jwtToken = Cookies.get("jwtToken")
         const TrendApi = "https://apis.ccbp.in/videos/trending"
         const options = {method:"GET",headers:{Authorization:`Bearer ${jwtToken}`}}
@@ -81,12 +85,12 @@ class Trending extends Component
             )
 
             // console.log(ReformattedVideos)
-            this.setState({VideoArray:ReformattedVideos})
+            this.setState({VideoArray:ReformattedVideos,ApiStatus:ApiStatusArr[1]})
 
         }
         else
         {
-            console.log("Api calling is failed")
+            this.setState({ApiStatus:ApiStatusArr[2]})
         }
     }
 
@@ -123,13 +127,66 @@ class Trending extends Component
 
 
 
+    renderSuccessView = ()=>
+    {
+        const {VideoArray} = this.state
+         if (VideoArray === null) 
+        {
+                return null
+        }  
+
+        const SuccessView = 
+        <div className="trending-videos-container">
+
+                                            {
+                                                VideoArray.map
+                                                (
+                                                    (VideoArrayObj)=>
+                                                    {
+                                                        return <TrendingIndividualCard key={VideoArrayObj.id} VideoArrayObj={VideoArrayObj}  /> 
+                                                    }
+                                                )                                   
+                                            }
+
+
+        </div>
+
+
+        return SuccessView
+    }
 
 
 
+    renderFailureView = (ThemeColor) =>
+{
+    const FailureView =
+    <div className="failure-view-container">
+        <img 
+            src={ThemeColor === "black" ? "https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png" : "https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"} 
+            alt="failure view" 
+            className="failure-img"
+        />
+        <h2 className={ThemeColor === "black" ? "failure-heading black-failure-theme" : "failure-heading white-failure-theme"}>
+            Oops! Something Went Wrong
+        </h2>
+        <p className={ThemeColor === "black" ? "failure-description black-failure-theme" : "failure-description white-failure-theme"}>
+            We are having some trouble completing your request. Please try again.
+        </p>
+        <button className="failure-retry-btn" onClick={this.CallApi}>Retry</button>
+    </div>
+
+    return FailureView
+}
 
 
 
+     renderLoadingView = ()=>
+    {
+        const LoadingView = 
+        <ThreeDots height="180" width="180" color="red" visible={true}/>
 
+        return LoadingView
+    }
 
 
 
@@ -141,13 +198,10 @@ class Trending extends Component
 
     render()
     {
+        const {VideoArray,ApiStatus} = this.state
         
-        const {VideoArray} = this.state
 
-        if (VideoArray === null)
-        {
-            return null
-        }
+      
         
         
         
@@ -166,21 +220,9 @@ class Trending extends Component
                                 <SideNav />
                                 <div className="main-section">
                                         {this.renderTrendingStrip()}
-                                        <div className="trending-videos-container">
-
-                                            {
-                                                VideoArray.map
-                                                (
-                                                    (VideoArrayObj)=>
-                                                    {
-                                                        return <TrendingIndividualCard key={VideoArrayObj.id} VideoArrayObj={VideoArrayObj}  /> 
-                                                    }
-                                                )                                   
-                                            }
-
-
-                                        </div>
-
+                                        {ApiStatus===ApiStatusArr[0]?this.renderLoadingView():null}
+                                        {ApiStatus===ApiStatusArr[1]?this.renderSuccessView():null}
+                                        {ApiStatus===ApiStatusArr[2]?this.renderFailureView(ThemeColor):null}
                                 </div>
                             
                             </div>

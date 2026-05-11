@@ -10,7 +10,7 @@ const SavedVidContextObj = React.createContext(
         CheckIdInDisLikedArr:()=>{},
         DisLikedArrId:[],
         ChangeThemeColor:()=>{},
-        ThemeColor:""
+        ThemeColor:"white"
     }
 )
 

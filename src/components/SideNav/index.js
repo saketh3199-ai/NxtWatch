@@ -23,10 +23,10 @@ class SideNav extends Component
 
                     {/* SECTION 1 */}
                     <div className="side-section-1">
-                        <Link to="/" className="nav-item">Home</Link>
-                        <Link to="/trending" className="nav-item">Trending</Link>
-                        <Link to="/gaming" className="nav-item">Gaming</Link>
-                        <Link to="/saved-videos" className="nav-item">Saved Videos</Link>
+                        <Link to="/" className={ThemeColor==="black"?"nav-item black-theme-side-nav":"nav-item white-theme-side-nav"}>Home</Link>
+                        <Link to="/trending" className={ThemeColor==="black"?"nav-item black-theme-side-nav":"nav-item white-theme-side-nav"}>Trending</Link>
+                        <Link to="/gaming" className={ThemeColor==="black"?"nav-item black-theme-side-nav":"nav-item white-theme-side-nav"}>Gaming</Link>
+                        <Link to="/saved-videos" className={ThemeColor==="black"?"nav-item black-theme-side-nav":"nav-item white-theme-side-nav"}>Saved Videos</Link>
                     </div>
 
                     {/* SECTION 2 (BOTTOM) */}

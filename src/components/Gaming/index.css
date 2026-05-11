@@ -1,3 +1,54 @@
 
 
 
+.gaming-failure-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.gaming-failure-img {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 24px;
+}
+
+.gaming-failure-heading {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 12px;
+}
+
+.gaming-failure-description {
+    font-size: 15px;
+    margin: 0 0 24px;
+    max-width: 400px;
+    line-height: 1.6;
+}
+
+.gaming-black-theme {
+    color: #A5D6FF;
+}
+
+.gaming-white-theme {
+    color: #0f0f0f;
+}
+
+.gaming-failure-retry-btn {
+    background-color: #3b82f6;
+    color: #ffffff;
+    border: none;
+    padding: 10px 28px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.gaming-failure-retry-btn:hover {
+    background-color: #2563eb;
+}

@@ -10,7 +10,7 @@
 .vid-title {
     font-size: 18px;
     font-weight: 600;
-    color: #0f0f0f;
+    /* color: #0f0f0f; */
     margin: 16px 0 10px;
 }
 
@@ -21,6 +21,18 @@
     flex-wrap: wrap;
     gap: 10px;
 }
+
+.title-black-theme-vd
+{
+     color:#A5D6FF;
+}
+
+
+.title-white-theme-vd
+{
+     color:#0f0f0f;
+}
+
 
 .views-time {
     display: flex;
@@ -41,13 +53,18 @@
     background: none;
     border: none;
     font-size: 14px;
-    color: #606060;
+    /* color: #606060; */
     cursor: pointer;
     font-weight: 500;
 }
 
+
+.saved-active {
+    color: rgb(0, 255, 42);   /* green when saved */
+}
+
 .interaction-btn:hover {
-    color: #0f0f0f;
+    color: #2563eb; 
 }
 
 .interaction-icon {
@@ -117,19 +134,19 @@
 .channel-name {
     font-size: 16px;
     font-weight: 600;
-    color: #0f0f0f;
+    /* color: #0f0f0f; */
     margin: 0;
 }
 
 .subscribers {
     font-size: 13px;
-    color: #606060;
+    /* color: #606060; */
     margin: 0;
 }
 
 .channel-description {
     font-size: 14px;
-    color: #383838;
+    /* color: #383838; */
     line-height: 1.6;
     margin: 8px 0 0;
 }

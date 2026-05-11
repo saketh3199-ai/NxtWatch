@@ -50,6 +50,66 @@
     text-decoration: none;
 }
 
+.individual-trending-video-container:hover {
+  transform: translateY(-4px);
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.failure-view-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.failure-img {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 24px;
+}
+
+.failure-heading {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 12px;
+}
+
+.failure-description {
+    font-size: 15px;
+    margin: 0 0 24px;
+    max-width: 400px;
+    line-height: 1.6;
+}
+
+.black-failure-theme {
+    color: #A5D6FF;
+}
+
+.white-failure-theme {
+    color: #0f0f0f;
+}
+
+.failure-retry-btn {
+    background-color: #3b82f6;
+    color: #ffffff;
+    border: none;
+    padding: 10px 28px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.failure-retry-btn:hover {
+    background-color: #2563eb;
+}
+
+
+
 .trending-thumbnail {
     width: 55%;
     flex-shrink: 0;
